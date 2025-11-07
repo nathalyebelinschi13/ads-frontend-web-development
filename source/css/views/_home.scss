@@ -1,0 +1,452 @@
+@use "sass:color" as c;
+@use "sass:math" as m;
+@use "../styles/colors" as *;
+@use "../assets/typography" as *;
+@use "../utils/breakpoints" as *;
+@use "../views/nav" as *;
+
+.container.hero {
+  width: 100%;
+  height: calc(100vh - 130px);
+  min-height: 500px;
+  display: flex;
+  align-items: self-start;
+  justify-content: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding-top: 4rem;
+  background-image: url(/source/images/floresta.jpg);
+  background-size: cover;
+  background-position: offset 0 100px;
+  background-position-x: left;
+  background-position-y: center;
+
+  @include breakpointMax(tablet) {
+    height: auto;
+    min-height: 400px;
+    padding-top: 2rem;
+  }
+
+  @include breakpointMax(mobile) {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  & .hero__container {
+    box-sizing: content-box;
+    padding: 2rem;
+    border-radius: 25px;
+    text-align: center;
+    justify-content: center;
+    width: 80%;
+    background: $gradiente-primario-claro;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+
+    @include breakpointMax(tablet) {
+      width: 90%;
+      padding: 1.5rem;
+    }
+
+    @include breakpointMax(mobile) {
+      width: 95%;
+      padding: 1rem;
+    }
+
+    &::after {
+      --angle: 0deg;
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-image: conic-gradient(
+        from var(--angle),
+        transparent 10%,
+        $clara,
+        $clara-escura,
+        $clara-escura-2
+      );
+      top: 50%;
+      left: 50%;
+      z-index: -1;
+      transform: translate(-50%, -50%);
+      border-radius: 20px;
+      padding: 5px;
+      animation: rotate 2s linear infinite;
+      filter: blur(2px);
+    }
+
+    &::before {
+      --angle: 0deg;
+      filter: blur(1.5rem);
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-image: conic-gradient(
+        from var(--angle),
+        $clara,
+        $clara-escura,
+        $clara-escura-2
+      );
+      top: 50%;
+      left: 50%;
+      z-index: -1;
+      transform: translate(-50%, -50%);
+      border-radius: 20px;
+      padding: 2px;
+      filter: drop-shadow(0 0 10px rgba(0, 0, 0, 1))
+        drop-shadow(0 0 12px DarkGreen)
+        drop-shadow(0 0 14px rgba(136, 255, 0, 0.6));
+      animation: rotate 2s 20ms linear infinite;
+    }
+
+    & .hero__title {
+      font-family: $logo;
+      font-weight: 200;
+      color: $escura;
+      font-size: 3rem;
+      white-space: nowrap;
+      margin-bottom: 1rem;
+      @include breakpointMax(tablet) {
+        font-size: 2.5rem;
+      }
+      @include breakpointMax(mobile) {
+        font-size: 2.2rem;
+      }
+    }
+
+    & .hero__description {
+      font-family: $sans;
+      font-weight: 400;
+      font-size: 1.2rem;
+      padding: 0 1rem;
+      margin-bottom: 3rem;
+
+      @include breakpointMax(tablet) {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+      }
+
+      @include breakpointMax(mobile) {
+        font-size: 1rem;
+        padding: 0 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+}
+
+[data-theme="dark"] .container.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.hero__cta.button.button--primary {
+  display: inline-block;
+  font-family: $sans;
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 0.75rem 1.5rem;
+  background-color: $secundaria;
+  color: $clara;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.6s ease;
+
+  &:hover {
+    background-color: $secundaria-escura;
+    transform: scale(1.1) translateY(-4px);
+    box-shadow: 0 6px 10px black;
+  }
+}
+
+@property --angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes rotate {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+
+[data-theme="dark"] .section {
+  background: $escura;
+  color: $clara;
+}
+
+.hero__sections--bg {
+  padding: 2rem 0;
+  background-image:
+    linear-gradient(
+      to top,
+      rgba(255, 153, 153, 0) 0%,
+      rgba(255, 153, 153, 0) 75%,
+      $primaria-escura 100%
+    ),
+    url(/source/images/coala.jpg);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  position: relative;
+}
+
+[data-theme="dark"] .hero__sections--bg {
+  background: linear-gradient(
+    135deg,
+    $escura 0%,
+    $escura-clara 50%,
+    $escura-clara-2 100%
+  );
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(/source/images/coala.jpg);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    opacity: 0.1;
+    z-index: 0;
+  }
+}
+
+.section.section--doacoes,
+.section.section--voluntarios,
+.section.section--projetos {
+  background: $clara;
+  max-width: 500px;
+  min-width: 1rem;
+  color: $escura;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  & h2 {
+    font-family: $serifa;
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    @include breakpointMax(mobile) {
+      font-size: 1.5rem;
+    }
+  }
+  & p {
+    font-family: $sans;
+    font-weight: 400;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    @include breakpointMax(mobile) {
+      font-size: 0.8rem;
+    }
+  }
+  & .section__link {
+    color: $clara;
+    background-color: $primaria-escura;
+    width: calc(100% - 10px);
+    text-align: center;
+    text-transform: uppercase;
+    transition: all 0.6s ease;
+    &:hover {
+      background-color: $escura-clara-2;
+      box-shadow: 0 6px 10px black;
+      transform: scale(1.1);
+    }
+    @include breakpointMax(mobile) {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+[data-theme="dark"] .section.section--doacoes,
+[data-theme="dark"] .section.section--voluntarios,
+[data-theme="dark"] .section.section--projetos {
+  background: rgba(30, 40, 30, 0.95);
+  color: $clara;
+  border: 1px solid rgba(83, 126, 34, 0.4);
+
+  h2 {
+    color: $primaria-clara;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  p {
+    color: $clara-escura;
+  }
+
+  .section__link {
+    background-color: $secundaria;
+    color: $clara;
+
+    &:hover {
+      background-color: $secundaria-escura;
+    }
+  }
+}
+
+.hero__sobre--bg {
+  box-shadow: 0px -10px 20px rgba(0, 0, 0, 1);
+  padding: 3rem 0;
+  background: $gradiente-primario-claro;
+  z-index: 2;
+}
+
+[data-theme="dark"] .hero__sobre--bg {
+  background: linear-gradient(
+    135deg,
+    $escura 0%,
+    $escura-clara 50%,
+    $escura-clara-2 100%
+  );
+  box-shadow: inset 0px 10px 20px rgba(0, 0, 0, 0.8);
+}
+
+.container.hero__sobre {
+  margin: 0 2rem;
+  padding: 2rem;
+  background: rgba(42, 73, 39, 0.44);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.7px);
+  -webkit-backdrop-filter: blur(3.7px);
+  border: 1px solid rgba(42, 73, 39, 0.77);
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  & h2 {
+    color: c.adjust($clara, $lightness: 10%);
+    font-family: $logo;
+    font-weight: 300;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    @include breakpointMax(mobile) {
+      font-size: 1.5rem;
+    }
+    [data-theme="dark"] & {
+      color: $clara;
+    }
+  }
+  & .section__description.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    max-width: 80%;
+    @include breakpointMax(tablet) {
+      max-width: 100%;
+    }
+    & .card.hero__about {
+      background: $clara;
+      height: fill;
+      color: $escura;
+      border-radius: 16px;
+      padding: 1rem;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+
+      & a {
+        color: $clara;
+        background-color: $primaria-escura;
+        text-transform: uppercase;
+        text-align: center;
+        transition: all 0.6s ease;
+        &:hover {
+          background-color: $escura-clara-2;
+          box-shadow: 0 6px 10px black;
+          transform: scale(1.1);
+        }
+        @include breakpointMax(mobile) {
+          font-size: 0.7rem;
+        }
+      }
+      & h3 {
+        font-family: $serifa;
+        font-weight: 600;
+        font-size: 1.5rem;
+        @include breakpointMax(mobile) {
+          font-size: 1.2rem;
+        }
+      }
+      & p {
+        font-family: $sans;
+        font-weight: 400;
+        font-size: 1rem;
+        @include breakpointMax(mobile) {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+[data-theme="dark"]
+  .container.hero__sobre
+  .section__description.container
+  .card.hero__about
+  a {
+  background-color: $secundaria;
+  &:hover {
+    background-color: $secundaria-escura;
+    transform: scale(1.1) translateY(-4px);
+    box-shadow: 0 6px 10px black;
+  }
+}
+
+[data-theme="dark"] .container.hero__sobre {
+  color: $clara;
+  background: rgba(30, 40, 30, 0.9);
+  border: 1px solid rgba(83, 126, 34, 0.4);
+
+  h2 {
+    color: $clara;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+
+  & .section__description.container .card.hero__about {
+    background: rgba(83, 126, 34, 0.9);
+    color: $clara;
+    border: 1px solid rgba(139, 180, 100, 0.4);
+
+    h3 {
+      color: $primaria-clara;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    p {
+      color: $clara-escura;
+    }
+  }
+}
