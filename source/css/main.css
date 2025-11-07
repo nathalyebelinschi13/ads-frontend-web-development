@@ -945,9 +945,6 @@ a {
   background: var(--bg-accent);
   box-shadow: 0 0 0 3px rgba(139, 180, 100, 0.2);
 }
-[data-theme=dark] input::-moz-placeholder, [data-theme=dark] textarea::-moz-placeholder, [data-theme=dark] select::-moz-placeholder {
-  color: var(--text-muted);
-}
 [data-theme=dark] input::placeholder,
 [data-theme=dark] textarea::placeholder,
 [data-theme=dark] select::placeholder {
@@ -973,8 +970,7 @@ a {
 [data-theme=dark] .navbar {
   background: rgba(30, 35, 40, 0.98);
   border-color: var(--border-color);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 [data-theme=dark] .navbar__menu--link {
   color: var(--text-primary);
@@ -1026,10 +1022,6 @@ a {
 }
 [data-theme=dark] ::-webkit-scrollbar-thumb:hover {
   background: var(--c-primaria);
-}
-[data-theme=dark] ::-moz-selection {
-  background-color: var(--c-primaria);
-  color: var(--bg-primary);
 }
 [data-theme=dark] ::selection {
   background-color: var(--c-primaria);
@@ -1161,8 +1153,7 @@ body {
 }
 
 a:not([class]) {
-  -webkit-text-decoration-skip: ink;
-          text-decoration-skip-ink: auto;
+  text-decoration-skip-ink: auto;
   color: var(--c-primaria);
 }
 a:not([class]):hover {
@@ -1170,11 +1161,6 @@ a:not([class]):hover {
 }
 a:not([class]):visited {
   color: var(--c-primaria-escura);
-}
-
-::-moz-selection {
-  background-color: var(--c-primaria);
-  color: var(--c-clara);
 }
 
 ::selection {
@@ -1185,11 +1171,6 @@ a:not([class]):visited {
 ::-moz-selection {
   background-color: var(--c-primaria);
   color: var(--c-clara);
-}
-
-[data-theme=dark] ::-moz-selection {
-  background-color: var(--c-primaria-clara);
-  color: var(--c-escura);
 }
 
 [data-theme=dark] ::selection,
@@ -1526,4 +1507,4 @@ p {
 
 .transition-bounce {
   transition: all var(--transition-bounce);
-}/*# sourceMappingURL=main.css.map */
+}
