@@ -1,0 +1,251 @@
+@use "sass:color" as c;
+@use "sass:math" as m;
+@use "../styles/colors" as *;
+@use "../assets/typography" as *;
+@use "../utils/breakpoints" as *;
+
+.donations {
+  padding: 4rem 2rem;
+  background: $gradiente-animais;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(/source/images/araras.jpg);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    z-index: 0;
+  }
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__title {
+    font-family: $logo;
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+
+    @include breakpointMax(tablet) {
+      font-size: 2rem;
+    }
+  }
+
+  &__description {
+    font-family: $sans;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__ways {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  &__impact {
+    background: var(--card-bg, var(--bg-primary));
+    border-radius: 16px;
+    padding: 3rem;
+    box-shadow: 0 4px 30px var(--shadow-color);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border, var(--border-color));
+  }
+
+  &__subtitle {
+    font-family: $serifa;
+    font-size: 2rem;
+    color: var(--text-accent);
+    margin-bottom: 2rem;
+  }
+}
+
+.donation-method {
+  background: var(--bg-primary);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 30px var(--shadow-color);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 40px var(--shadow-color);
+  }
+
+  &__title {
+    font-family: $serifa;
+    font-size: 1.5rem;
+    color: var(--text-accent);
+    margin-bottom: 1rem;
+  }
+
+  &__description {
+    font-family: $sans;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  &__details {
+    font-family: $mono;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+
+    p {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+
+    li {
+      font-family: $sans;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+
+      &::before {
+        content: "★";
+        position: absolute;
+        left: 0;
+        color: var(--bg-accent);
+      }
+    }
+  }
+
+  &__cta {
+    display: inline-block;
+    text-decoration: none;
+  }
+}
+
+.impact-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.impact-stat {
+  &__number {
+    font-family: $logo;
+    font-size: 2rem;
+    color: var(--text-accent);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  &__description {
+    font-family: $sans;
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+}
+
+// Correções específicas para tema escuro
+[data-theme="dark"] {
+  .donations {
+    background: linear-gradient(
+      135deg,
+      $escura 0%,
+      $escura-clara 50%,
+      $escura-clara-2 100%
+    );
+
+    &::before {
+      opacity: 0.2;
+    }
+
+    &__title {
+      color: $clara;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    &__description {
+      color: $clara-escura;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    }
+
+    &__subtitle {
+      color: $primaria-clara;
+    }
+  }
+
+  .donation-method {
+    background: rgba(30, 40, 30, 0.95);
+    border: 1px solid rgba(83, 126, 34, 0.4);
+
+    &__title {
+      color: $secundaria-clara;
+    }
+
+    &__description {
+      color: $clara-escura;
+    }
+
+    &__details {
+      color: $clara;
+
+      strong {
+        color: $primaria-clara;
+      }
+    }
+
+    &__benefits li {
+      color: $clara;
+
+      &::before {
+        color: $secundaria-clara;
+      }
+    }
+  }
+
+  .donations__impact {
+    background: rgba(30, 40, 30, 0.95);
+    border: 1px solid rgba(83, 126, 34, 0.4);
+
+    .donations__subtitle {
+      color: $primaria-clara;
+    }
+  }
+
+  .impact-stat {
+    &__number {
+      color: $secundaria-clara;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    &__description {
+      color: $clara;
+    }
+  }
+}
