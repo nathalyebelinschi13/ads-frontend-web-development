@@ -5,9 +5,11 @@
   "description": "Website institucional - Guardiões da Natureza",
   "scripts": {
     "build:sass": "sass source/css/main.scss source/css/main.css --no-source-map",
-    "build": "npm run build:sass"
+    "copy-assets": "shx mkdir -p dist && shx cp -r index.html index.js source dist/",
+    "build": "npm run build:sass && npm run copy-assets"
   },
   "devDependencies": {
-    "sass": "^1.78.0"
+    "sass": "^1.78.0",
+    "shx": "^0.4.0"
   }
 }

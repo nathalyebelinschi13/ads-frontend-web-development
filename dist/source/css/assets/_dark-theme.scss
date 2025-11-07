@@ -1,0 +1,236 @@
+// ============================================
+// TEMA DARK MELHORADO - Alta Legibilidade
+// ============================================
+
+[data-theme="dark"] {
+  // === Cores Primárias Ajustadas ===
+  --c-primaria: hsl(139, 35%, 55%);
+  --c-primaria-clara: hsl(139, 40%, 65%);
+  --c-primaria-escura: hsl(139, 30%, 40%);
+
+  // === Cores Secundárias Ajustadas ===
+  --c-secundaria: hsl(8, 75%, 60%);
+  --c-secundaria-clara: hsl(8, 80%, 70%);
+  --c-secundaria-escura: hsl(8, 70%, 50%);
+
+  // === Backgrounds ===
+  --bg-primary: hsl(200, 15%, 12%);
+  --bg-secondary: hsl(200, 15%, 16%);
+  --bg-accent: hsl(200, 15%, 20%);
+
+  // === Textos com Melhor Contraste ===
+  --text-primary: hsl(0, 0%, 95%);
+  --text-secondary: hsl(0, 0%, 80%);
+  --text-accent: var(--c-primaria-clara);
+  --text-muted: hsl(0, 0%, 60%);
+
+  // === Bordas e Sombras ===
+  --border-color: rgba(255, 255, 255, 0.12);
+  --border-light: rgba(255, 255, 255, 0.08);
+  --shadow-color: rgba(0, 0, 0, 0.6);
+
+  // === Cards ===
+  --card-bg: rgba(30, 35, 40, 0.95);
+  --card-border: rgba(139, 180, 100, 0.2);
+  --card-hover-bg: rgba(35, 40, 45, 0.95);
+
+  // === Estados Interativos ===
+  --hover-overlay: rgba(255, 255, 255, 0.05);
+  --focus-ring: var(--c-primaria-clara);
+  --active-bg: rgba(255, 255, 255, 0.1);
+
+  // Melhor contraste para elementos críticos
+  color-scheme: dark;
+}
+
+// === Ajustes Específicos de Elementos ===
+[data-theme="dark"] {
+  // Melhorar legibilidade de textos
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+  }
+
+  // Links mais visíveis
+  a:not(.button) {
+    color: var(--c-primaria-clara);
+
+    &:hover {
+      color: var(--c-primaria);
+    }
+  }
+
+  // Botões com melhor contraste
+  .button--primary {
+    background-color: var(--c-secundaria);
+    color: var(--text-primary);
+
+    &:hover {
+      background-color: var(--c-secundaria-escura);
+      box-shadow: 0 8px 20px rgba(202, 60, 37, 0.4);
+    }
+  }
+
+  .button--secondary {
+    background-color: var(--c-primaria);
+    color: var(--bg-primary);
+
+    &:hover {
+      background-color: var(--c-primaria-clara);
+      box-shadow: 0 8px 20px rgba(83, 126, 34, 0.4);
+    }
+  }
+
+  // Cards com visual melhorado
+  .card,
+  .project-card,
+  .donation-method,
+  .about__card,
+  .section {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+
+    &:hover {
+      background: var(--card-hover-bg);
+      border-color: rgba(139, 180, 100, 0.3);
+    }
+  }
+
+  // Formulários mais legíveis
+  input,
+  textarea,
+  select {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+
+    &:focus {
+      border-color: var(--c-primaria-clara);
+      background: var(--bg-accent);
+      box-shadow: 0 0 0 3px rgba(139, 180, 100, 0.2);
+    }
+
+    &::placeholder {
+      color: var(--text-muted);
+    }
+  }
+
+  // Melhorar contraste de títulos
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .hero__title,
+  .section__title,
+  .about__title {
+    color: var(--text-primary);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  // Descrições mais legíveis
+  p,
+  .section__description,
+  .hero__description {
+    color: var(--text-secondary);
+  }
+
+  // Navbar com melhor visual
+  .navbar {
+    background: rgba(30, 35, 40, 0.98);
+    border-color: var(--border-color);
+    backdrop-filter: blur(10px);
+
+    &__menu--link {
+      color: var(--text-primary);
+
+      &:hover {
+        color: var(--c-primaria-clara);
+      }
+    }
+  }
+
+  // Footer melhorado
+  .footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+
+    &__nav-link {
+      color: var(--text-secondary);
+
+      &:hover {
+        color: var(--c-primaria-clara);
+      }
+    }
+  }
+
+  // Melhorar contraste de ícones e imagens
+  img {
+    opacity: 0.95;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  // Estados de erro mais visíveis
+  .form-group--error {
+    .form-group__input,
+    .form-group__select,
+    .form-group__textarea {
+      border-color: var(--c-secundaria-clara);
+      background-color: rgba(202, 60, 37, 0.1);
+    }
+
+    .form-group__label,
+    .form-group__error {
+      color: var(--c-secundaria-clara);
+    }
+  }
+
+  // Mensagens de sucesso
+  .form-message--success {
+    background: rgba(83, 126, 34, 0.2);
+    border-color: var(--c-primaria-clara);
+    color: var(--text-primary);
+  }
+
+  // Scrollbar customizada para tema dark
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--c-primaria-escura);
+    border-radius: 6px;
+
+    &:hover {
+      background: var(--c-primaria);
+    }
+  }
+
+  // Seleção de texto melhorada
+  ::selection {
+    background-color: var(--c-primaria);
+    color: var(--bg-primary);
+  }
+
+  ::-moz-selection {
+    background-color: var(--c-primaria);
+    color: var(--bg-primary);
+  }
+
+  // Melhorar contraste de código/monospace
+  code,
+  pre {
+    background: var(--bg-secondary);
+    color: var(--c-primaria-clara);
+    border: 1px solid var(--border-color);
+  }
+}
