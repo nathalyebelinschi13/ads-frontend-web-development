@@ -69,7 +69,6 @@ html {
 
 // Micro-interações nos Links
 a:not(.button) {
-  position: relative;
   transition: color 0.3s ease;
 
   &::after {
